@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Venda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input[type="text"] {
+            font-size: 20px;
+            width: 200px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        select {
+            font-size: 20px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .num-key {
+            font-size: 24px;
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registro de Venda</h1>
+    
+    <form method="POST">
+        <input type="text" id="valor" name="valor" placeholder="Digite o valor" readonly required><br>
+        
+        <select name="forma_pagamento" required>
+            {% for pagamento in formas_pagamento %}
+                <option value="{{ pagamento }}">{{ pagamento }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <div>
+            <!-- Teclado Numérico -->
+            <button type="button" class="num-key" onclick="addNumber('1')">1</button>
+            <button type="button" class="num-key" onclick="addNumber('2')">2</button>
+            <button type="button" class="num-key" onclick="addNumber('3')">3</button><br>
+            <button type="button" class="num-key" onclick="addNumber('4')">4</button>
+            <button type="button" class="num-key" onclick="addNumber('5')">5</button>
+            <button type="button" class="num-key" onclick="addNumber('6')">6</button><br>
+            <button type="button" class="num-key" onclick="addNumber('7')">7</button>
+            <button type="button" class="num-key" onclick="addNumber('8')">8</button>
+            <button type="button" class="num-key" onclick="addNumber('9')">9</button><br>
+            <button type="button" class="num-key" onclick="addNumber('0')">0</button>
+            <button type="button" class="num-key" onclick="clearNumber()">C</button>
+            <button type="button" class="num-key" onclick="addNumber('.')">.</button><br>
+        </div>
+        
+        <br>
+        <button type="submit">Registrar Venda</button>
+    </form>
+    
+    <script>
+        function addNumber(num) {
+            var input = document.getElementById('valor');
+            input.value = input.value + num;
+        }
+
+        function clearNumber() {
+            var input = document.getElementById('valor');
+            input.value = '';
+        }
+    </script>
+</body>
+</html>
